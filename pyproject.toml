@@ -1,0 +1,46 @@
+[build-system]
+requires = ['setuptools>=45', 'setuptools-scm[toml]>=6.2']
+build-backend = 'setuptools.build_meta'
+
+[project]
+name = 'logikal-utils'
+description = 'Common Python utilities used at Logikal'
+readme = 'README.rst'
+requires-python = '~= 3.8'
+license = {file = 'LICENSE.txt'}
+authors = [{name = 'Logikal GmbH', email = 'contact@logikal.io'}]
+keywords = ['python', 'utilities']
+classifiers = [
+  'Development Status :: 5 - Production/Stable',
+  'Intended Audience :: Developers',
+  'License :: OSI Approved :: MIT License',
+  'Operating System :: POSIX :: Linux',
+  'Programming Language :: Python :: 3',
+  'Programming Language :: Python :: 3.8',
+  'Topic :: Software Development',
+  'Typing :: Typed',
+]
+dynamic = ['version', 'dependencies', 'optional-dependencies']
+
+[project.urls]
+'Documentation' = 'https://docs.logikal.io/logikal-utils/'
+'Release notes' = 'https://github.com/logikal-io/logikal-utils/releases'
+'Issue tracker' = 'https://github.com/logikal-io/logikal-utils/issues'
+'Source code' = 'https://github.com/logikal-io/logikal-utils'
+
+[tool.setuptools.dynamic]
+dependencies = {file = 'requirements/core.txt'}
+
+[tool.setuptools.dynamic.optional-dependencies]
+docker = {file = 'requirements/extras/docker.txt'}
+
+[tool.setuptools]
+packages = ['logikal_utils']
+
+[tool.setuptools_scm]
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+  'docker.*',
+]
