@@ -1,0 +1,5 @@
+-e .
+-r core.txt
+-r extras/docker.txt
+
+logikal-docs==1.1.3
