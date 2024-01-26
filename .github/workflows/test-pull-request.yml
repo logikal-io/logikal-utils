@@ -5,6 +5,8 @@ jobs:
   run-python-tests:
     name: Run Python tests
     uses: logikal-io/github-workflows/.github/workflows/run-python-tests.yml@v5
+    with:
+      fetch-depth: 0
     permissions:
       contents: read
       id-token: write
