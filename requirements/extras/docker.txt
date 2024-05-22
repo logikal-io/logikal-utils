@@ -1,1 +1,4 @@
 docker~=7.0
+# Note: these can be removed once the docker-py issue is fixed
+requests<2.32  # see https://github.com/docker/docker-py/issues/3256
+types-requests<2.32  # see https://github.com/docker/docker-py/issues/3256

@@ -4,6 +4,16 @@ from pytest_mock import MockerFixture
 from logikal_utils import docker
 
 
+def test_compose_file_not_found(mocker: MockerFixture) -> None:
+    container = mocker.Mock(attrs={'State': {'Health': {'Status': 'healthy'}}})
+    client = mocker.patch('logikal_utils.docker.client_from_env').return_value
+    client.containers.list.side_effect = [[container]]
+
+    mocker.patch('logikal_utils.docker.Path.exists', return_value=False)
+    with raises(RuntimeError, match='Compose file not found'):
+        docker.Service('test').start_services()
+
+
 def test_non_existent_service(mocker: MockerFixture) -> None:
     run = mocker.patch('logikal_utils.docker.subprocess.run')
     with raises(RuntimeError, match='service .* not found'):

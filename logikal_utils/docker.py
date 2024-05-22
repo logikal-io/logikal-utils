@@ -1,5 +1,6 @@
 import os
 import subprocess
+from pathlib import Path
 from time import sleep, time
 from typing import Optional
 
@@ -22,7 +23,8 @@ class Service:
         """
         Manage a project's Docker Compose services.
 
-        .. note:: Automatically starts all services during initialization whenever necessary.
+        .. note:: Automatically starts all services during initialization whenever necessary based
+            on the ``compose.yml`` or ``compose/local.yml`` file.
         .. note:: Requires the :ref:`docker extra <index:Docker>`.
 
         Args:
@@ -53,8 +55,15 @@ class Service:
         Start all Docker Compose services in the given project.
         """
         print(colored('Starting Docker Compose services', 'yellow', attrs=['bold']))
+        for compose_file in [Path('compose.yml'), Path('compose/local.yml')]:
+            if compose_file.exists():
+                print(f'Using {compose_file}')
+                break
+        else:
+            raise RuntimeError('Compose file not found')
+
         command = [
-            'docker', 'compose', 'up', '--detach',
+            'docker', 'compose', '--file', str(compose_file), 'up', '--detach',
             *(['--quiet-pull'] if 'GITHUB_ACTIONS' in os.environ else []),
             '--wait', '--wait-timeout', str(self.start_timeout_seconds),
         ]
