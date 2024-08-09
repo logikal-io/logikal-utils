@@ -6,6 +6,7 @@
     self
     project
     docker
+    imports
     development
     license
 
