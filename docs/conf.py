@@ -9,3 +9,6 @@ extensions = [
 intersphinx_mapping = {
     'python': (f'https://docs.python.org/{sys.version_info[0]}.{sys.version_info[1]}', None),
 }
+nitpick_ignore = [
+    ('py:class', 'module'),
+]
