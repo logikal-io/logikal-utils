@@ -1,6 +1,7 @@
 import os
 import subprocess
 from pathlib import Path
+from sys import stderr
 from time import sleep, time
 from typing import Optional
 
@@ -54,10 +55,13 @@ class Service:
         """
         Start all Docker Compose services in the given project.
         """
-        print(colored('Starting Docker Compose services', 'yellow', attrs=['bold']))
+        print(
+            colored('Starting Docker Compose services', 'yellow', attrs=['bold']),
+            file=stderr, flush=True,
+        )
         for compose_file in [Path('compose.yml'), Path('compose/local.yml')]:
             if compose_file.exists():
-                print(f'Using {compose_file}')
+                print(f'Using {compose_file}', file=stderr, flush=True)
                 break
         else:
             raise RuntimeError('Compose file not found')
@@ -68,7 +72,7 @@ class Service:
             '--wait', '--wait-timeout', str(self.start_timeout_seconds),
         ]
         subprocess.run(command, text=True, check=True)  # nosec: secure, not using untrusted input
-        print()
+        print(file=stderr, flush=True)
 
     def _running_container(self, client: DockerClient, start_services: bool) -> Container:
         filters = {
@@ -90,7 +94,7 @@ class Service:
                 raise RuntimeError(f'{self} is not healthy{logs_str}')
 
             if self.ready_log_text and not start_services:
-                print(f'Waiting for service "{self.name}" to be ready...')
+                print(f'Waiting for service "{self.name}" to be ready...', file=stderr, flush=True)
                 wait_start_time = time()
                 while (  # pylint: disable=while-used
                     self.ready_log_text not in container.logs().decode()
@@ -98,7 +102,7 @@ class Service:
                     if time() - wait_start_time >= self.start_timeout_seconds:
                         raise RuntimeError(f'{self} is not ready')
                     sleep(self.log_poll_seconds)
-                print()
+                print(file=stderr, flush=True)
 
             return container
 
