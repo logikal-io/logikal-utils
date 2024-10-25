@@ -1,9 +1,8 @@
 from importlib import import_module
 from types import ModuleType
-from typing import Optional
 
 
-def try_import(name: str) -> Optional[ModuleType]:
+def try_import(name: str) -> ModuleType | None:
     """
     Return the imported module, or :data:`None` if it was not found.
     """
