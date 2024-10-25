@@ -3,7 +3,6 @@ import subprocess
 from pathlib import Path
 from sys import stderr
 from time import sleep, time
-from typing import Optional
 
 from docker import DockerClient, from_env as client_from_env
 from docker.models.containers import Container
@@ -16,9 +15,9 @@ class Service:
     def __init__(  # pylint: disable=too-many-arguments
         self,
         name: str,
-        project: Optional[str] = None,
+        project: str | None = None,
         start_timeout_seconds: float = 30,
-        ready_log_text: Optional[str] = None,
+        ready_log_text: str | None = None,
         log_poll_seconds: float = 3,
     ):
         """

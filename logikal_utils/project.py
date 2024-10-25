@@ -1,11 +1,14 @@
+import tomllib
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
-import tomli
-
 PATH = Path('pyproject.toml')
 #: The ``pyproject.toml`` configuration of the current project.
-PYPROJECT: Any = tomli.loads(PATH.read_text(encoding='utf-8')) if PATH.exists() else {}
+PYPROJECT: dict[str, Any] = (
+    tomllib.loads(PATH.read_text(encoding='utf-8'), parse_float=Decimal)
+    if PATH.exists() else {}
+)
 
 
 def tool_config(name: str) -> Any:
