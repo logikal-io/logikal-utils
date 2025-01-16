@@ -13,6 +13,7 @@ cloud: false
 description: Common Python utilities used at Logikal
 extras:
 - docker
+- download
 jupyter: false
 keywords:
 - python
