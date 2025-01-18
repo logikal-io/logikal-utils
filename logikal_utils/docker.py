@@ -15,6 +15,7 @@ class Service:
     def __init__(  # pylint: disable=too-many-arguments
         self,
         name: str,
+        *,
         project: str | None = None,
         start_timeout_seconds: float = 30,
         ready_log_text: str | None = None,
@@ -25,7 +26,7 @@ class Service:
 
         .. note:: Automatically starts all services during initialization whenever necessary based
             on the ``compose.yml`` or ``compose/local.yml`` file.
-        .. note:: Requires the :ref:`docker extra <index:Docker>`.
+        .. note:: Requires the :ref:`docker extra <index:docker>`.
 
         Args:
             name: The name of the service to manage.

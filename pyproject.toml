@@ -33,6 +33,7 @@ dependencies = {file = 'requirements/core.txt'}
 
 [tool.setuptools.dynamic.optional-dependencies]
 docker = {file = 'requirements/extras/docker.txt'}
+download = {file = 'requirements/extras/download.txt'}
 
 [tool.setuptools]
 packages = ['logikal_utils']

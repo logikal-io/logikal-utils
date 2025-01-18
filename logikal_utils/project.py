@@ -1,3 +1,6 @@
+"""
+Utilities for viewing project configuration.
+"""
 import tomllib
 from decimal import Decimal
 from pathlib import Path
