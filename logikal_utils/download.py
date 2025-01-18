@@ -1,3 +1,6 @@
+"""
+Utilities for downloading files.
+"""
 import os
 from pathlib import Path
 from sys import stderr
@@ -7,6 +10,11 @@ from tqdm import tqdm
 
 
 def download(url: str, output: Path) -> Path:
+    """
+    Download a file from a given URL.
+
+    .. note:: Requires the :ref:`download extra <index:download>`.
+    """
     print(f'Downloading "{url}"...', file=stderr)
     data_stream = requests.get(url, stream=True, timeout=30)
     total_size = int(data_stream.headers.get('content-length', 0))

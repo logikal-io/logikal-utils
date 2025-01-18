@@ -4,9 +4,11 @@
     :hidden:
 
     self
-    project
     docker
+    download
     imports
+    project
+    testing
     development
     license
 
@@ -29,11 +31,22 @@ very simple:
 
 That's it! You can now use any of the provided standard utilities.
 
-Docker
+Extras
 ------
-In case you want to use the :ref:`Docker utilities <docker:Docker>`, you need to install the
-``docker`` extra:
+docker
+~~~~~~
+The ``docker`` extra provides additional utilities for :ref:`managing Docker Compose services
+<docker:Docker>`:
 
 .. code-block:: shell
 
     pip install logikal-utils[docker]
+
+download
+~~~~~~~~
+The ``download`` extra provides the :func:`~logikal_utils.download.download` function for
+downloading resources from the internet.
+
+.. code-block:: shell
+
+    pip install logikal-utils[download]
