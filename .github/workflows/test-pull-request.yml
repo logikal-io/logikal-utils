@@ -7,3 +7,6 @@ jobs:
     uses: logikal-io/github-workflows/.github/workflows/run-python-tests.yml@v9
     with:
       fetch-depth: 0
+    permissions:
+      contents: read
+      id-token: write
