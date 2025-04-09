@@ -3,4 +3,4 @@
 -r extras/docker.txt
 -r extras/download.txt
 
-logikal-docs==1.2.1
+logikal-docs==1.2.2
