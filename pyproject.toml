@@ -7,13 +7,12 @@ name = 'logikal-utils'
 description = 'Common Python utilities used at Logikal'
 readme = 'README.rst'
 requires-python = '~= 3.12'
-license = {file = 'LICENSE.txt'}
+license = 'MIT'
 authors = [{name = 'Logikal GmbH', email = 'contact@logikal.io'}]
 keywords = ['python', 'utilities']
 classifiers = [
   'Development Status :: 5 - Production/Stable',
   'Intended Audience :: Developers',
-  'License :: OSI Approved :: MIT License',
   'Operating System :: POSIX :: Linux',
   'Programming Language :: Python :: 3',
   'Programming Language :: Python :: 3.12',
