@@ -2,6 +2,6 @@
 -r build.txt
 -r docs.txt
 
-pytest-logikal==5.1.1
+pytest-logikal==5.1.8
 types-requests
 types-tqdm

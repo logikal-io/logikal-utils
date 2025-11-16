@@ -41,6 +41,4 @@ packages = ['logikal_utils']
 
 [[tool.mypy.overrides]]
 ignore_missing_imports = true
-module = [
-  'docker.*',
-]
+module = ['docker.*']
