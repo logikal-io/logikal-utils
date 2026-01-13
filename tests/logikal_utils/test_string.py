@@ -1,9 +1,12 @@
+import pytest
+
 from logikal_utils.string import compact
 
 
 def test_whitespace() -> None:
     assert compact('hello   world') == 'hello world'
     assert compact('   hello world   ') == 'hello world'
+    assert compact('hello' + ' ' * 10 + 'world') == 'hello world'
 
 
 def test_newlines() -> None:
@@ -21,6 +24,7 @@ def test_newlines_whitespace() -> None:
 
 def test_basic() -> None:
     assert compact('hello world') == 'hello world'
+    assert compact('hello') == 'hello'
 
 
 def test_empty() -> None:
@@ -28,6 +32,7 @@ def test_empty() -> None:
     assert not compact('\n')
     assert not compact(' \n ')
     assert not compact('   ')
+    assert not compact('\t')
 
 
 def test_tabs() -> None:
@@ -41,3 +46,10 @@ def test_compact_twice() -> None:
     compacted = compact(text)
     assert compact(text) == "longer text with multiple whitespaces"
     assert compact(compacted) == compacted
+
+
+def test_non_string() -> None:
+    with pytest.raises(AttributeError):
+        compact(123)  # type: ignore
+    with pytest.raises(AttributeError):
+        compact([])  # type: ignore
