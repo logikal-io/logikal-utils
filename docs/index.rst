@@ -7,7 +7,9 @@
     docker
     download
     imports
+    path
     project
+    string
     testing
     development
     license
