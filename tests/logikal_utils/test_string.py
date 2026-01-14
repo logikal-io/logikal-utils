@@ -36,8 +36,10 @@ def test_newlines() -> None:
     assert compact('hello\n\nworld') == 'hello world'
     assert compact('\nhello world') == 'hello world'
     assert compact('\nhello world\n') == 'hello world'
-    assert compact("""hello
-    world""") == 'hello world'
+    assert compact("""
+        hello
+        world
+    """) == 'hello world'
 
 
 def test_newlines_whitespace() -> None:
