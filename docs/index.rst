@@ -9,6 +9,7 @@
     imports
     project
     testing
+    string
     development
     license
 
