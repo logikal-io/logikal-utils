@@ -1,6 +1,3 @@
-"""
-Utilities for managing strings.
-"""
 import re
 
 

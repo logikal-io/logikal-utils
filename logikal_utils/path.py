@@ -1,6 +1,3 @@
-"""
-Utilities for managing paths.
-"""
 import logging
 import os
 import shutil
