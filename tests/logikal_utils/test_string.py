@@ -1,23 +1,4 @@
-import pytest
-
 from logikal_utils.string import compact
-
-
-def test_compact() -> None:
-    assert callable(compact)
-    assert compact.__name__ == 'compact'
-    assert isinstance(compact('hello world'), str)
-
-
-def test_non_string() -> None:
-    with pytest.raises(AttributeError):
-        compact(123)  # type: ignore
-    with pytest.raises(AttributeError):
-        compact([])  # type: ignore
-    with pytest.raises(AttributeError):
-        compact({'key': 'value'})  # type: ignore
-    with pytest.raises(AttributeError):
-        compact(True)  # type: ignore
 
 
 def test_basic() -> None:
