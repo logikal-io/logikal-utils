@@ -66,8 +66,9 @@ def test_empty() -> None:
 
 
 def test_call_twice() -> None:
-    text = """longer text   with
-    multiple  whitespaces
+    text = """
+        longer text   with
+        multiple  whitespaces
     """
     compacted = compact(text)
     assert compact(text) == "longer text with multiple whitespaces"
