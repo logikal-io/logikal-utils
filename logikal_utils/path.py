@@ -1,3 +1,6 @@
+"""
+Utilities for managing paths.
+"""
 import logging
 import os
 import shutil
@@ -10,6 +13,9 @@ logger = logging.getLogger(__name__)
 
 
 def tmp_path(prefix: str, suffix: str) -> Path:
+    """
+    Return the path.
+    """
     path = Path(mkdtemp(prefix=f'{prefix}_', suffix=f'_{suffix}'))
     path.mkdir(parents=True, exist_ok=True)  # ensure the path exists
     logger.debug(f'Using temporary path "{path}/"')
@@ -17,6 +23,9 @@ def tmp_path(prefix: str, suffix: str) -> Path:
 
 
 def unzip(archive: Path) -> Path:
+    """
+    Extract an archive and return the path.
+    """
     with ZipFile(archive) as archive_file:
         for member_info in archive_file.infolist():
             extracted_path = archive_file.extract(member_info, archive.parent / archive.stem)
@@ -31,6 +40,9 @@ def unzip(archive: Path) -> Path:
 
 
 def move(source: Path, destination: Path) -> Path:
+    """
+    Move a file from source to destination.
+    """
     destination.parent.mkdir(parents=True, exist_ok=True)  # create parent folders
     shutil.rmtree(destination, ignore_errors=True)  # remove existing content
     shutil.move(str(source), str(destination))

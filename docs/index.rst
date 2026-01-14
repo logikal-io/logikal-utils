@@ -50,3 +50,12 @@ downloading resources from the internet.
 .. code-block:: shell
 
     pip install logikal-utils[download]
+
+string
+~~~~~~~~
+The ``string`` extra provides the :func:`~logikal_utils.string.compact` function for
+formatting strings.
+
+.. code-block:: shell
+
+    pip install logikal-utils[string]
