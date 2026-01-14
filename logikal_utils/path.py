@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 
 def tmp_path(prefix: str, suffix: str) -> Path:
     """
-    Return the path.
+    Create a temporary path.
     """
     path = Path(mkdtemp(prefix=f'{prefix}_', suffix=f'_{suffix}'))
     path.mkdir(parents=True, exist_ok=True)  # ensure the path exists
@@ -24,7 +24,7 @@ def tmp_path(prefix: str, suffix: str) -> Path:
 
 def unzip(archive: Path) -> Path:
     """
-    Extract an archive and return the path.
+    Extract an archive.
     """
     with ZipFile(archive) as archive_file:
         for member_info in archive_file.infolist():
