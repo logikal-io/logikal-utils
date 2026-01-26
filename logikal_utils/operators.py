@@ -1,10 +1,10 @@
 from collections.abc import Iterable
-from typing import TypeVar
-
-T = TypeVar('T')
 
 
-def unique(iterable: Iterable[T]) -> Iterable[T]:
+def unique[T](iterable: Iterable[T]) -> Iterable[T]:
+    """
+    Yield unique elements from an iterable.
+    """
     seen = set()
     for element in iterable:
         if element not in seen:
