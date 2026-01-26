@@ -7,6 +7,7 @@
     docker
     download
     imports
+    operators
     path
     project
     string
