@@ -12,6 +12,7 @@
     project
     string
     testing
+    node
     development
     license
 
