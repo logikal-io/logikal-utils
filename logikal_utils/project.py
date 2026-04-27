@@ -14,6 +14,16 @@ PYPROJECT: dict[str, Any] = (
 )
 
 
+def project_name(raise_error_on_missing: bool = True) -> str | None:
+    """
+    Return the project name from ``pyproject.toml``.
+    """
+    project = PYPROJECT.get('project', {}).get('name')
+    if raise_error_on_missing and not project:
+        raise RuntimeError('You must specify a project name in pyproject.toml')
+    return project  # type: ignore[no-any-return]
+
+
 def tool_config(name: str) -> Any:
     """
     Return the ``pyproject.toml`` configuration of a given tool.

@@ -8,7 +8,7 @@ from docker import DockerClient, from_env as client_from_env
 from docker.models.containers import Container
 from termcolor import colored
 
-from logikal_utils.project import PYPROJECT
+from logikal_utils.project import project_name
 
 
 class Service:
@@ -38,7 +38,7 @@ class Service:
 
         """
         self.name = name
-        self.project = project or PYPROJECT['project']['name']
+        self.project = project or project_name()
         self.start_timeout_seconds = start_timeout_seconds
         self.ready_log_text = ready_log_text
         self.log_poll_seconds = log_poll_seconds
