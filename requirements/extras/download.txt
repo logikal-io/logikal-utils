@@ -1,2 +1,2 @@
-requests~=2.32
+requests~=2.34
 tqdm~=4.67
