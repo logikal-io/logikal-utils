@@ -13,4 +13,8 @@ intersphinx_mapping = {
 nitpick_ignore = [
     ('py:class', 'module'),
     ('py:class', 'Function'),
+    # python 3.12: remove the following items:
+    ('py:class', 'T'),
+    ('py:class', 'logikal_utils.operators.T'),
+    ('py:class', 'logikal_utils.testing.Function'),
 ]

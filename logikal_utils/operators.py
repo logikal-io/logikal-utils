@@ -1,7 +1,13 @@
 from collections.abc import Iterable
+from typing import TypeVar
+
+T = TypeVar('T')
 
 
-def unique[T](iterable: Iterable[T]) -> Iterable[T]:
+# python 3.12:
+# - remove: T = TypeVar('T')
+# - update: def unique[T](iterable: Iterable[T]) -> Iterable[T]:
+def unique(iterable: Iterable[T]) -> Iterable[T]:
     """
     Yield unique elements from an iterable.
     """
