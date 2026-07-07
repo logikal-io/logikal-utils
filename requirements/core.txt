@@ -1,1 +1,2 @@
-termcolor~=3.3
+# current: ~=3.3 (causes Cloud Composer conflicts on testing)
+termcolor>=2.4
