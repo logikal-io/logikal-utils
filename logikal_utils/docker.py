@@ -12,7 +12,7 @@ from logikal_utils.project import project_name
 
 
 class Service:
-    def __init__(  # pylint: disable=too-many-arguments
+    def __init__(
         self,
         name: str,
         *,
